@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>edit comment</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+   <header class="bg-color-black position-fixed full-width margin-b15 z-index-1">
+    <div class="container flex justify-between pading">
+    <div>
+      <a class="color-white text-shadow1" href="/">Home</a>
+    </div>
+    <nav><ul><li><a href="/books/new"><button class="btn color-gray text-shadow1 ">Add Book</button></a></li></ul></nav>
+    </div>
+   </header>
+   <main>
+    <section class="bg-color-gray height-100vh overflow-hidden">
+      <div class="container   height-100vh position-relative top flex justify-center align-center">
+          <div class="box-shadow width40 height20 text-center pading width-100-mq">
+          <h1 class="font-size-2 text-shadow2">Edit comment</h1>
+ <form action="/comments/<%=comment.id%>" method="post" class=" full-width pading">
+<textarea name="content" id="" cols="30" rows="3" class="full-width"><%=comment.content%></textarea> <br>
+<input type="submit" class="btn bg-color-green">
+      </form>
+      </div>
+     
+      </div>
+          
+
+    </section>
+   </main>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookstore</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <header class="bg-color-black position-fixed full-width margin-b15 z-index-1">
+    <div class="container flex justify-between pading">
+      <div>
+        <a class="color-white text-shadow1" href="/">Home</a>
+      </div>
+
+      <nav class="">
+        <ul class="flex">
+          <li>
+            <a href="/books"><button class="btn color-gray text-shadow1">
+                All Book
+              </button></a>
+          </li>
+
+          <li>
+            <a href="/books/new"><button class="btn color-gray text-shadow1 margin-left1">
+                Add Book
+              </button></a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="bg-color-gray height-100vh overflow-scroll scroll-none">
+      <!-- filter form div -->
+      <div
+        class="container flex justify-around position-fixed full-width z-index-1 bg-color-gray top pading flex-row-mq">
+        <!--filter category form-->
+
+        <form action="/books" method="GET">
+          <span class="text-shadow1">All Category</span>
+          <select name="category">
+            <% uniqueCategory.forEach(elm=>{ %>
+              <option value="<%=elm%>">
+                <%=elm%>
+              </option>
+              <%})%>
+          </select>
+          <input type="submit" />
+        </form>
+
+        <!--filter author form-->
+
+        <!-- <form action="/books" method="GET">
+          <span class="text-shadow1">All Author</span>
+          <select name="author">
+            <% uniqueAuthor.forEach(elm=>{ %>
+              <option value="<%=elm%>">
+                <%=elm%>
+              </option>
+              <%})%>
+          </select>
+          <input type="submit" />
+        </form> -->
+
+        <!-- filter title form -->
+        <form action="/books" method="GET">
+          <span class="text-shadow1">All Title</span>
+          <select name="title">
+            <% uniqueTitle.forEach(elm=>{ %>
+              <option value="<%=elm%>">
+                <%=elm%>
+              </option>
+              <%})%>
+          </select>
+          <input type="submit" />
+        </form>
+
+      </div>
+      <!-- render book div -->
+      <div class="container height-100vh margin-t6 flex flex-wrap-yes gap2 justify-around margint3-mq ">
+        <%allbook.forEach((elm)=>{%>
+          <div class="width20 height40 box-shadow width-100-mq">
+            <figure class="full-width height70">
+              <img class="full-width" src="/images/<%=elm.bookImage%>" alt="" />
+            </figure>
+            <div class="height30 text-center line-height overflow-scroll scroll-none">
+              <h1 class="font-size-15 text-shadow1">
+                <span>Title: </span>
+                <%=elm.title%>
+              </h1>
+              <p class="text-shadow1">
+                <span>Author: </span>
+                <%=elm.author.name%>
+              </p>
+              <p class="text-shadow1">
+                <span>Category: </span>
+                <%=elm.category%>
+              </p>
+              <a href="/books/<%=elm.id%>"><button class="btn bg-color-green text-shadow1">
+                  Reed
+                </button></a>
+            </div>
+          </div>
+          <%})%>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

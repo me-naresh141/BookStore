@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>singal book</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://kit.fontawesome.com/d08fba0fb1.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+   <header class="bg-color-black position-fixed full-width margin-b15">
+    <div class="container flex justify-between pading">
+    <div>
+      <a class="color-white text-shadow1" href="/">Home</a>
+    </div>
+    <nav>
+        <ul class="flex">
+            <li><a href="/books"><button class="btn color-gray text-shadow1 ">Back</button></a></li>
+            <li><a href="/books/new"><button class="btn color-gray text-shadow1 margin-left1">Add Book</button></a></li>
+        </ul>
+    </nav>
+    </div>
+   </header>
+   <main>
+    <section class="bg-color-gray height-100vh overflow-hidden">
+      <div class="container height-100vh position-relative top  ">
+       <!--  -->
+       <div class="height-100vh box-shadow pading  width40 margin-0auto width-100-mq">
+        <!-- 1 -->
+        <figure class="height30 ">
+            <img src="/images/<%=book.bookImage%>" alt="">
+        </figure>
+        <!-- 2 -->
+        <div class="height30">
+            <h1 class="font-size-2 font-weight600 text-shadow1"><span class="color-geru">Title: </span><%=book.title%></h1>
+            <p class="font-size-15 font-weight500 text-shadow1"> <span class="color-geru">Author: </span><%=book.author.name%></p>
+            <p class="height50  scroll-none overflow-scroll text-shadow1"> <span class="color-geru">Summary: </span><%=book.summary%></p>
+            <a class="font-size-2 text-shadow1" href="/books/<%=book.id%>/like"><i class="fa-solid fa-thumbs-up"></i></a>
+            <span class="font-size-2 text-shadow1"><%=book.likes%></span>
+             <a class="font-size-2 margin-left1 text-shadow1" href="/books/<%=book.id%>/dislike"><i class="fa-solid fa-thumbs-down"></i></a>
+             <div class="margin-t1">
+                <a href="/books/<%=book.id%>/edit"><button class="btn bg-color-green text-shadow1">Edit</button></a>
+                 <a href="/books/<%=book.id%>/delete"><button class="btn bg-color-red text-shadow1">Delete</button></a>
+             </div>
+        </div>
+        <!-- 3 -->
+        <div class="height40 margin-t1 ">
+            <form action="/books/<%=book.id%>/comments" method="post">
+                <input class="font-size-15 margin-b1 margin-t1" type="text" name="content" id="" placeholder="write comments"> <br>
+                <input class=" btn bg-color-green text-shadow1" type="submit">
+            </form>
+            <h3 class="text-shadow1"><%=book.comments.length%>  Comments</h3>
+            <div class="height70 scroll-none overflow-scroll">
+              <%book.comments.reverse().forEach((elm)=>{%>
+                <div class="bg-color-blue margin-b1 word-wrap">
+                <p class="text-shadow1"><%=elm.content%></p>
+                <a class="text-shadow1" href="/comments/<%=elm.id%>/like"><i class="fa-solid fa-thumbs-up"></i></a>
+            <span class="text-shadow1"><%=elm.likes%></span>
+             <a class="margin-left1 text-shadow1" href="/comments/<%=elm.id%>/dislike"><i class="fa-solid fa-thumbs-down"></i></a> 
+             <a href="/comments/<%=elm.id%>/edit"><button class=" btn bg-color-green text-shadow1">Edit</button></a>
+             <a href="/comments/<%=elm.id%>/delete"><button class=" btn bg-color-red text-shadow1">Delete</button></a>
+                </div>
+              <%})%>  
+               
+            </div>
+        </div>
+
+       </div>
+       
+      
+       </div>
+    </section>
+   </main>
+  </body>
+</html>
